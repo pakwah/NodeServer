@@ -15,6 +15,6 @@ To be done:
 
 ###Routes we would need to handle:  
 /login  
-/users/(user_id) -> "requires" authentication
-/wall
-/wall/create
+/users/(user_id) -> "requires" authentication  
+/wall  
+/wall/create  
