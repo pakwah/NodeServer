@@ -1,0 +1,46 @@
+* 
+{	font-family: skia, verdana, arial, sans-serif;
+	font-size: 28px;
+	line-height: 1.5em;
+	text-align: center;
+}
+
+#user {
+	border-style: dashed;
+	background-color: #E3F6CE;
+}
+
+#user:focus {
+	border-color: #FFFF00;
+}
+
+#password {
+	border-style: dashed;
+	background-color: #E3F6CE;
+}
+
+#password:focus {
+	border-color: #FFFF00;
+}
+
+#submit {
+	background-color: #BEF781;
+	border-style: outset;
+}
+
+#submit:active {
+	border-style: inset;
+}
+
+#field {
+	width: 500px;
+	padding: 20px;
+	margin-top: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: dashed;
+	border-radius: 50px, 50px, 50px, 50px;
+	background-color: #E3F6CE;
+}
+
+
