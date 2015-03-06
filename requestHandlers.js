@@ -1,10 +1,12 @@
 var queryString = require("querystring");
 var formidable = require("formidable");
+var url = require("url");
+var path = require("path");
 var fs = require("fs");
 
 function start(res, req) {
 	console.log("Request handler 'start' was called.");
-	
+
 	// HTML to be served
 	var body = '<html>' + '<head>' + '<meta http-equiv="Content-Type" content="text/html; '
 				+ 'charset = UTF-8" />'
@@ -60,6 +62,43 @@ function show(res, req) {
 	});
 }
 
+function file(res, req) {
+
+	var pathname = url.parse(req.url).pathname;
+	var filename = path.join(process.cwd(), pathname); //default
+
+	fs.exists(filename, function(exists) {
+		if(!exists) {
+			res.writeHead(404, {"Content-Type": "text/plain"});
+			res.write("404 Not Found\n");
+			res.end();
+			return;
+		}
+
+		if(fs.statSync(filename).isDirectory()) {
+			filename += "/HTML/login.html";
+		}
+
+		fs.readFile(filename, "binary", function(err, file) {
+			if(err) {
+				res.writeHead(500, {"Content-Type": "text/plain"});
+				res.write(err + "\n");
+				res.end();
+				return;
+			}
+
+			res.writeHead(200);
+			res.write(file, "binary");
+			console.log("served " + filename);
+			res.end();
+			return;
+		});
+
+		
+	});
+}
+
 exports.start = start;
 exports.upload = upload;
 exports.show = show;
+exports.file = file;

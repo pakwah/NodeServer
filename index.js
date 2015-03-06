@@ -6,9 +6,10 @@ var handle = {};			// handle is an object whose fields are different URLs holdin
 							// corresponding handling functions
 							// i.e. a collection of functions
 							
-handle["/"] = requestHandlers.start;		
+handle["/"] = requestHandlers.file;		
 handle["/start"] = requestHandlers.start;
 handle["/upload"] = requestHandlers.upload; 
 handle["/show"] = requestHandlers.show;
+handle["/file"] = requestHandlers.file;
 
 server.start(router.route, handle);
