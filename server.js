@@ -21,5 +21,3 @@ function start(route, handle) {
 }
 
 exports.start = start;						// export the "start server" functionality to other modules
-
-
